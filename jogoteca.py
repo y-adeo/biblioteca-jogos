@@ -27,7 +27,7 @@ def index():
 def novo():
     return render_template('novoJogo.html', titulo='Novo Jogo')
 
-@app.route('/criar', methods=['POST',])
+@app.route('/criar', methods=['POST'],)
 def criar():
     nome = request.form['nome']
     categoria = request.form['categoria']
@@ -37,5 +37,16 @@ def criar():
 
     return redirect('/')
 
+"""------------------------- Página de Login ------------------------- """
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/autenticar', methods=['POST'],)
+def autenticar():
+    if 'alohomora' == request.form['senha']:
+        return redirect('/')
+    else:
+        return redirect('/login')
 
 app.run(debug=True)
